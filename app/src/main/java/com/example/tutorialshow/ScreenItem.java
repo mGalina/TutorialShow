@@ -2,8 +2,8 @@ package com.example.tutorialshow;
 
 public class ScreenItem {
 
-    String Title,Description;
-    int ScreenImg;
+    private String Title,Description;
+    private int ScreenImg;
 
     ScreenItem(String title, String description, int screenImg) {
         Title = title;
@@ -23,15 +23,15 @@ public class ScreenItem {
         ScreenImg = screenImg;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return Title;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return Description;
     }
 
-    public int getScreenImg() {
+    int getScreenImg() {
         return ScreenImg;
     }
 }
