@@ -2,7 +2,7 @@ package com.example.tutorialshow;
 
 public class ScreenItem {
 
-    private String Title,Description;
+    private String Title, Description;
     private int ScreenImg;
 
     ScreenItem(String title, String description, int screenImg) {

@@ -38,7 +38,7 @@ public class IntroActivity extends AppCompatActivity {
 
         if (restorePrefData()) {
 
-            Intent mainActivity = new Intent (getApplicationContext(), MainActivity.class);
+            Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(mainActivity);
             finish();
 
@@ -62,7 +62,7 @@ public class IntroActivity extends AppCompatActivity {
         mList.add(new ScreenItem("ПРОСМОТР СОБЫТИЙ", "Параметрическая система событий", R.drawable.img_1));
 
         screenPager = findViewById(R.id.screen_viewpager);
-        introViewPagerAdapter = new IntroViewPagerAdapter(this,mList);
+        introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
         screenPager.setAdapter(introViewPagerAdapter);
 
         tabIndicator.setupWithViewPager(screenPager);
@@ -72,13 +72,13 @@ public class IntroActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 position = screenPager.getCurrentItem();
-                if(position < mList.size()) {
+                if (position < mList.size()) {
 
-                    position ++;
+                    position++;
                     screenPager.setCurrentItem(position);
                 }
 
-                if(position == mList.size() - 1) {
+                if (position == mList.size() - 1) {
 
                     loaddLastScreen();
 
@@ -90,7 +90,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                if (tab.getPosition() == mList.size() -1) {
+                if (tab.getPosition() == mList.size() - 1) {
 
                     loaddLastScreen();
                 }
@@ -112,10 +112,10 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mainActivity = new Intent (getApplicationContext(),MainActivity.class);
+                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
-                
-                savePrefsData ();
+
+                savePrefsData();
                 finish();
 
             }
@@ -125,7 +125,7 @@ public class IntroActivity extends AppCompatActivity {
 
     private boolean restorePrefData() {
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
         Boolean isIntroActivityOpenedBefore = pref.getBoolean("isIntroOpened", false);
         return isIntroActivityOpenedBefore;
 
@@ -133,9 +133,9 @@ public class IntroActivity extends AppCompatActivity {
 
     private void savePrefsData() {
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isIntroOpened",true);
+        editor.putBoolean("isIntroOpened", true);
         editor.commit();
 
     }
