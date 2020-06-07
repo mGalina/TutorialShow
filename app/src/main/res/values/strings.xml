@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">TutorialShow</string>
+
     <string name="next">Далее</string>
-    <string name="getStarted">Старт</string>
+    <string name="skip">Пропустить</string>
+    <string name="getStarted">Начать</string>
+
+    <string name="title1">Мониторинг</string>
+    <string name="title2">Запрос трека</string>
+    <string name="title3">Телеметрия</string>
+    <string name="title4">Отчеты</string>
+    <string name="title5">Контроль качества</string>
+    <string name="title6">Просмотр событий</string>
+
+    <string name="description1">Контроль местоположения в режиме реального времени</string>
+    <string name="description2">Просмотр истории перемещения за выбранный интервал времени</string>
+    <string name="description3">Графический анализ динамики поведения параметров автомобиля</string>
+    <string name="description4">Гибкая система отчётов, контроль расхода топлива, контроль параметров CAN шины</string>
+    <string name="description5">Система контроля качества эксплуатации и вождения</string>
+    <string name="description6">Параметрическая система событий</string>
+
+
 </resources>

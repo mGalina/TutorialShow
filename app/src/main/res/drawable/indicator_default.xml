@@ -3,8 +3,9 @@
 
     <item>
 
-        <shape android:shape="ring"
+        <shape
             android:innerRadius="0dp"
+            android:shape="ring"
             android:thickness="4dp"
             android:useLevel="false">
 

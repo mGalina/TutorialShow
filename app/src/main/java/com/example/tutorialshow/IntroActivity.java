@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,6 +28,7 @@ public class IntroActivity extends AppCompatActivity {
     int position = 0;
     Button btnGetStarted;
     Animation btnAnim;
+    TextView tvSkip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +54,15 @@ public class IntroActivity extends AppCompatActivity {
         btnGetStarted = findViewById(R.id.btn_get_started);
         tabIndicator = findViewById(R.id.tab_indicator);
         btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_animation);
+        tvSkip = findViewById(R.id.tv_skip);
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("МОНИТОРИНГ", "Контроль местоположения в режиме реального времени", R.drawable.img_1));
-        mList.add(new ScreenItem("ЗАПРОС ТРЕКА", "Просмотр истории перемещения за выбранный интервал времени", R.drawable.img_1));
-        mList.add(new ScreenItem("ТЕЛЕМЕТРИЯ", "Графический анализ динамики поведения параметров автомобиля", R.drawable.img_1));
-        mList.add(new ScreenItem("ОТЧЕТЫ", "Гибкая система отчётов, контроль расхода топлива, контроль параметров CAN шины", R.drawable.img_1));
-        mList.add(new ScreenItem("КОНТРОЛЬ КАЧЕСТВА", "Система контроля качества эксплуатации и вождения", R.drawable.img_1));
-        mList.add(new ScreenItem("ПРОСМОТР СОБЫТИЙ", "Параметрическая система событий", R.drawable.img_1));
+        mList.add(new ScreenItem(R.string.title1, R.string.description1, R.drawable.img_1));
+        mList.add(new ScreenItem(R.string.title2, R.string.description2, R.drawable.img_1));
+        mList.add(new ScreenItem(R.string.title3, R.string.description3, R.drawable.img_1));
+        mList.add(new ScreenItem(R.string.title4, R.string.description4, R.drawable.img_1));
+        mList.add(new ScreenItem(R.string.title5, R.string.description5, R.drawable.img_1));
+        mList.add(new ScreenItem(R.string.title6, R.string.description6, R.drawable.img_1));
 
         screenPager = findViewById(R.id.screen_viewpager);
         introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
@@ -80,7 +83,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (position == mList.size() - 1) {
 
-                    loaddLastScreen();
+                    loadLastScreen();
 
                 }
             }
@@ -92,7 +95,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (tab.getPosition() == mList.size() - 1) {
 
-                    loaddLastScreen();
+                    loadLastScreen();
                 }
 
             }
@@ -117,10 +120,15 @@ public class IntroActivity extends AppCompatActivity {
 
                 savePrefsData();
                 finish();
-
             }
         });
 
+        tvSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                screenPager.setCurrentItem(mList.size());
+            }
+        });
     }
 
     private boolean restorePrefData() {
@@ -128,7 +136,6 @@ public class IntroActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
         Boolean isIntroActivityOpenedBefore = pref.getBoolean("isIntroOpened", false);
         return isIntroActivityOpenedBefore;
-
     }
 
     private void savePrefsData() {
@@ -137,13 +144,13 @@ public class IntroActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("isIntroOpened", true);
         editor.commit();
-
     }
 
-    private void loaddLastScreen() {
+    private void loadLastScreen() {
 
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
+        tvSkip.setVisibility(View.INVISIBLE);
         tabIndicator.setVisibility(View.INVISIBLE);
 
         btnGetStarted.setAnimation(btnAnim);
