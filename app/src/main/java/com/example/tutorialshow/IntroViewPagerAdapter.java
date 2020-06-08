@@ -4,13 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.List;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class IntroViewPagerAdapter extends PagerAdapter {
 
@@ -29,7 +30,7 @@ public class IntroViewPagerAdapter extends PagerAdapter {
         assert inflater != null;
         View layoutScreen = inflater.inflate(R.layout.layout_screen, null);
 
-        ImageView imgSlide = layoutScreen.findViewById(R.id.intro_img);
+        GifImageView imgSlide = layoutScreen.findViewById(R.id.intro_img);
         TextView title = layoutScreen.findViewById(R.id.intro_title);
         TextView description = layoutScreen.findViewById(R.id.intro_description);
 

@@ -6,13 +6,13 @@
 
     <!-- colors for button style -->
 
-    <color name="gradient_start_color">#4043C9</color>
-    <color name="gradient_end_color">#007AFF</color>
+    <color name="gradient_start_color">#24AEB6</color>
+    <color name="gradient_end_color">#24AEB6</color>
 
     <!-- colors for tab and screen text -->
 
-    <color name="tab_indicator_gray">#c0c0c0</color>
-    <color name="intro_title_color">#4043C9</color>
-    <color name="intro_description_color">#3967F8</color>
-    <color name="intro_skip_color">#4043C9</color>
+    <color name="tab_indicator_gray">#8A8A8A</color>
+    <color name="intro_title_color">#333333</color>
+    <color name="intro_description_color">#8A8A8A</color>
+    <color name="intro_skip_color">#24AEB6</color>
 </resources>
