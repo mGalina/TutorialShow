@@ -26,6 +26,7 @@ public class IntroViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         View layoutScreen = inflater.inflate(R.layout.layout_screen, null);
 
         ImageView imgSlide = layoutScreen.findViewById(R.id.intro_img);
@@ -53,7 +54,6 @@ public class IntroViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-
         container.removeView((View) object);
     }
 }

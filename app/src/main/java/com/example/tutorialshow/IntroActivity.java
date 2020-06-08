@@ -22,13 +22,12 @@ import java.util.List;
 public class IntroActivity extends AppCompatActivity {
 
     private ViewPager screenPager;
-    IntroViewPagerAdapter introViewPagerAdapter;
-    TabLayout tabIndicator;
-    Button btnNext;
-    int position = 0;
-    Button btnGetStarted;
-    Animation btnAnim;
-    TextView tvSkip;
+    private TabLayout tabIndicator;
+    private Button btnNext;
+    private int position = 0;
+    private Button btnGetStarted;
+    private Animation btnAnim;
+    private TextView tvSkip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +38,9 @@ public class IntroActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         if (restorePrefData()) {
-
             Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(mainActivity);
             finish();
-
         }
 
         setContentView(R.layout.activity_intro);
@@ -65,7 +62,7 @@ public class IntroActivity extends AppCompatActivity {
         mList.add(new ScreenItem(R.string.title6, R.string.description6, R.drawable.img_1));
 
         screenPager = findViewById(R.id.screen_viewpager);
-        introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
+        IntroViewPagerAdapter introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
         screenPager.setAdapter(introViewPagerAdapter);
 
         tabIndicator.setupWithViewPager(screenPager);
@@ -73,18 +70,13 @@ public class IntroActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 position = screenPager.getCurrentItem();
                 if (position < mList.size()) {
-
                     position++;
                     screenPager.setCurrentItem(position);
                 }
-
                 if (position == mList.size() - 1) {
-
                     loadLastScreen();
-
                 }
             }
         });
@@ -92,32 +84,25 @@ public class IntroActivity extends AppCompatActivity {
         tabIndicator.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 if (tab.getPosition() == mList.size() - 1) {
-
                     loadLastScreen();
                 }
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
-
                 savePrefsData();
                 finish();
             }
@@ -132,22 +117,18 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private boolean restorePrefData() {
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
-        Boolean isIntroActivityOpenedBefore = pref.getBoolean("isIntroOpened", false);
-        return isIntroActivityOpenedBefore;
+        return pref.getBoolean("isIntroOpened", false);
     }
 
     private void savePrefsData() {
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("isIntroOpened", true);
-        editor.commit();
+        editor.apply();
     }
 
     private void loadLastScreen() {
-
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
         tvSkip.setVisibility(View.INVISIBLE);
