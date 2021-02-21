@@ -55,11 +55,11 @@ public class IntroActivity extends AppCompatActivity {
 
         final List<ScreenItem> mList = new ArrayList<>();
         mList.add(new ScreenItem(R.string.title1, R.string.description1, R.drawable.car));
-        mList.add(new ScreenItem(R.string.title2, R.string.description2, R.drawable.car));
-        mList.add(new ScreenItem(R.string.title3, R.string.description3, R.drawable.car));
-        mList.add(new ScreenItem(R.string.title4, R.string.description4, R.drawable.car));
-        mList.add(new ScreenItem(R.string.title5, R.string.description5, R.drawable.car));
-        mList.add(new ScreenItem(R.string.title6, R.string.description6, R.drawable.car));
+        mList.add(new ScreenItem(R.string.title2, R.string.description2, R.drawable.car_4));
+        mList.add(new ScreenItem(R.string.title3, R.string.description3, R.drawable.car_2));
+        mList.add(new ScreenItem(R.string.title4, R.string.description4, R.drawable.car_3));
+        mList.add(new ScreenItem(R.string.title5, R.string.description5, R.drawable.car_5));
+        mList.add(new ScreenItem(R.string.title6, R.string.description6, R.drawable.car_1));
 
         screenPager = findViewById(R.id.screen_viewpager);
         IntroViewPagerAdapter introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
